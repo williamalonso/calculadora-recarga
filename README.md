@@ -26,7 +26,7 @@ Este projeto consiste em um único arquivo HTML e não requer instalação de pa
 
 Opção 1: Download Direto
 
-Baixe o arquivo calculadora_recarga.html.
+Baixe o arquivo ```index.html```.
 
 Abra-o diretamente em qualquer navegador web (Chrome, Firefox, Safari, etc.).
 
