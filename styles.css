@@ -1,0 +1,22 @@
+/* Define a fonte Inter como padrão */
+body {
+    font-family: 'Inter', sans-serif;
+}
+/* Melhora a aparência do input range (slider) */
+input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #2563eb; /* Azul do Tailwind */
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: -6px; /* Centraliza o thumb no track */
+}
+input[type='range']::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: #2563eb;
+    border-radius: 50%;
+    cursor: pointer;
+}
