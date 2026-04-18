@@ -2,168 +2,110 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de Custo de Recarga</title>
-    <!-- Carrega o Tailwind CSS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Calculadora de Recarga ⚡</title>
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Carrega a fonte Inter -->
+    
+    <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
 </head>
-<body class="bg-slate-100 flex items-center justify-center min-h-screen p-4">
+<body class="bg-slate-50 flex items-center justify-center min-h-screen p-4 sm:p-6">
 
     <!-- Card Principal -->
-    <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl max-w-lg w-full">
+    <div class="bg-white p-6 sm:p-10 rounded-[2rem] shadow-2xl max-w-lg w-full border border-slate-100">
 
         <!-- Cabeçalho -->
-        <h1 class="text-2xl sm:text-3xl font-bold text-slate-900 mb-2">
-            Calculadora de Recarga ⚡
-        </h1>
-        <p class="text-slate-600 mb-6 sm:mb-8">
-            Estime o custo para carregar seu carro elétrico (baseado em 44,9 kWh).
-        </p>
+        <header class="mb-8">
+            <h1 class="text-2xl sm:text-3xl font-bold text-slate-900 flex items-center gap-2">
+                Calculadora de Recarga ⚡
+            </h1>
+            <p class="text-slate-500 mt-1">
+                Baseado em bateria de <span class="font-bold text-slate-700">44,9 kWh</span>
+            </p>
+        </header>
 
-        <!-- Seção de Inputs -->
-        <div class="space-y-6">
+        <!-- Formulário de Inputs -->
+        <div class="space-y-8">
             
-            <!-- Input: Preço do kWh -->
-            <div>
-                <label for="price" class="block text-sm font-medium text-slate-700 mb-1.5">
-                    Preço do kWh (R$)
-                </label>
-                <div class="relative">
-                    <!-- Símbolo R$ dentro do input -->
-                    <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-500 text-lg">
-                        R$
-                    </span>
-                    <input 
-                        type="number" 
-                        id="price" 
-                        step="0.01" 
-                        min="0" 
-                        value="1.80" 
-                        placeholder="1.80" 
-                        class="w-full pl-12 pr-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-lg"
-                    >
-                </div>
-            </div>
-
-            <!-- Input: Taxa de Ativação -->
-            <div>
-                <label for="activationFee" class="block text-sm font-medium text-slate-700 mb-1.5">
-                    Taxa de Ativação (R$)
-                </label>
-                <div class="relative">
-                    <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-500 text-lg">
-                        R$
-                    </span>
-                    <input 
-                        type="number" 
-                        id="activationFee" 
-                        step="0.01" 
-                        min="0" 
-                        value="2.00" 
-                        placeholder="2.00" 
-                        class="w-full pl-12 pr-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-lg"
-                    >
-                </div>
-            </div>
-
-            <!-- Input: Porcentagem da Bateria -->
-            <div>
-                <label for="percentageSlider" class="block text-sm font-medium text-slate-700 mb-2">
-                    Carga Atual da Bateria (%)
-                </label>
-                <div class="flex items-center space-x-4">
-                    <!-- Slider -->
-                    <input 
-                        type="range" 
-                        id="percentageSlider" 
-                        min="0" 
-                        max="100" 
-                        value="20" 
-                        class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600"
-                    >
-                    <!-- Input numérico que sincroniza com o slider -->
-                    <input 
-                        type="number" 
-                        id="percentageInput" 
-                        min="0" 
-                        max="100" 
-                        value="20" 
-                        class="w-24 text-center py-2.5 border border-slate-300 rounded-lg text-lg font-medium"
-                    >
-                </div>
-            </div>
-
-            <!-- Cupom -->
-            <div class="space-y-3">
-                <div class="flex justify-between items-center">
-                    <label for="discountSlider" class="block text-sm font-medium text-slate-700">
-                        Desconto Aplicado
-                    </label>
-                    <div class="flex items-center gap-2">
-                        <input 
-                            type="number" 
-                            id="discountInput" 
-                            min="0" 
-                            max="100" 
-                            value="0"
-                            class="w-16 px-2 py-1 border border-slate-300 rounded text-right focus:outline-none focus:ring-2 focus:ring-blue-500 font-semibold"
-                        >
-                        <span class="text-slate-600 font-medium">%</span>
+            <!-- Grupo: Preços -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Preço do kWh</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 pl-4 flex items-center text-slate-400 font-semibold">R$</span>
+                        <input type="number" id="price" step="0.01" inputmode="decimal" value="1.80" 
+                            class="w-full pl-12 pr-4 py-4 bg-slate-50 border-2 border-slate-100 rounded-2xl focus:border-blue-500 focus:bg-white transition-all outline-none font-bold text-lg">
                     </div>
                 </div>
-                <input 
-                    type="range" 
-                    id="discountSlider" 
-                    min="0" 
-                    max="100" 
-                    value="0" 
-                    class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600"
-                >
+                <div>
+                    <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Taxa de Ativação</label>
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 pl-4 flex items-center text-slate-400 font-semibold">R$</span>
+                        <input type="number" id="activationFee" step="0.01" inputmode="decimal" value="2.00" 
+                            class="w-full pl-12 pr-4 py-4 bg-slate-50 border-2 border-slate-100 rounded-2xl focus:border-blue-500 focus:bg-white transition-all outline-none font-bold text-lg">
+                    </div>
+                </div>
             </div>
 
-            
+            <!-- Grupo: Bateria (Slider + Input) -->
+            <div class="bg-blue-50/30 p-5 rounded-2xl border border-blue-50">
+                <div class="flex justify-between items-center mb-2">
+                    <label class="text-sm font-bold text-slate-700">Carga Atual da Bateria</label>
+                    <div class="flex items-center gap-2">
+                        <input type="number" id="percentageInput" min="0" max="100" value="20" 
+                            class="w-16 py-1 border-b-2 border-blue-200 bg-transparent text-center font-bold text-blue-600 outline-none focus:border-blue-500 text-lg">
+                        <span class="font-bold text-blue-400">%</span>
+                    </div>
+                </div>
+                <input type="range" id="percentageSlider" min="0" max="100" value="20" class="accent-blue-600">
+            </div>
+
+            <!-- Grupo: Desconto (Slider + Input) -->
+            <div class="bg-green-50/30 p-5 rounded-2xl border border-green-50">
+                <div class="flex justify-between items-center mb-2">
+                    <label class="text-sm font-bold text-slate-700">Desconto Aplicado</label>
+                    <div class="flex items-center gap-2">
+                        <input type="number" id="discountInput" min="0" max="100" value="0" 
+                            class="w-16 py-1 border-b-2 border-green-200 bg-transparent text-center font-bold text-green-600 outline-none focus:border-green-500 text-lg">
+                        <span class="font-bold text-green-400">%</span>
+                    </div>
+                </div>
+                <input type="range" id="discountSlider" min="0" max="100" value="0" class="accent-green-600">
+            </div>
         </div>
 
         <!-- Seção de Resultados -->
-        <div id="results" class="mt-8 sm:mt-10 pt-6 sm:pt-8 border-t border-slate-200 space-y-4">
+        <div class="mt-10 pt-8 border-t border-slate-100 space-y-4">
             
             <!-- Resultado: Carga Completa -->
-            <div class="bg-slate-50 p-5 rounded-lg flex justify-between items-center transition-all duration-300">
+            <div class="p-5 rounded-2xl bg-slate-50 flex justify-between items-center">
                 <div>
-                    <h2 class="text-sm font-medium text-slate-600">
-                        Custo para Carga Completa
-                    </h2>
-                    <p class="text-sm text-slate-500">
-                        (0% a 100% | 44,9 kWh)
-                    </p>
+                    <h2 class="text-xs font-bold text-slate-400 uppercase">Carga Completa</h2>
+                    <p class="text-[10px] text-slate-400 font-medium">0% a 100% (44,9 kWh)</p>
                 </div>
-                <p id="totalCostFull" class="text-2xl font-bold text-slate-800">
-                    R$ 0,00
-                </p>
+                <p id="totalCostFull" class="text-2xl font-bold text-slate-800 whitespace-nowrap">R$ 0,00</p>
             </div>
 
             <!-- Resultado: Carga Parcial (Destaque) -->
-            <div class="bg-blue-50 p-5 rounded-lg flex justify-between items-center ring-2 ring-blue-500 transition-all duration-300">
+            <div class="p-6 rounded-3xl bg-blue-600 text-white shadow-xl shadow-blue-200 flex justify-between items-center transition-transform active:scale-[0.98]">
                 <div>
-                    <h2 class="text-base font-bold text-blue-800">
-                        Custo para Completar
-                    </h2>
-                    <p id="partialChargeLabel" class="text-sm text-blue-700 font-medium">
-                        De 36% até 100%
-                    </p>
+                    <h2 class="text-sm font-bold text-blue-100 opacity-90">Custo para Completar</h2>
+                    <p id="partialChargeLabel" class="text-xs font-medium text-blue-200">De 20% até 100%</p>
                 </div>
-                <p id="totalCostPartial" class="text-3xl font-bold text-blue-700">
-                    R$ 0,00
-                </p>
+                <p id="totalCostPartial" class="text-3xl font-bold whitespace-nowrap">R$ 0,00</p>
             </div>
         </div>
+
+        <p class="text-center text-[10px] text-slate-300 mt-8 font-medium uppercase tracking-widest">
+            Calculadora de Recarga v2.0
+        </p>
     </div>
 
-    <script src="./index.js"></script>
+    <script src="index.js"></script>
 </body>
 </html>

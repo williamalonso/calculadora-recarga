@@ -1,22 +1,46 @@
-/* Define a fonte Inter como padrão */
 body {
     font-family: 'Inter', sans-serif;
+    -webkit-tap-highlight-color: transparent;
 }
-/* Melhora a aparência do input range (slider) */
-input[type='range']::-webkit-slider-thumb {
+
+/* Estilização robusta para os Sliders (Mobile Friendly) */
+input[type="range"] {
     -webkit-appearance: none;
     appearance: none;
-    width: 20px;
-    height: 20px;
-    background: #2563eb; /* Azul do Tailwind */
-    border-radius: 50%;
-    cursor: pointer;
-    margin-top: -6px; /* Centraliza o thumb no track */
+    width: 100%;
+    height: 12px;
+    background: #e2e8f0;
+    border-radius: 99px;
+    outline: none;
+    margin: 15px 0;
 }
-input[type='range']::-moz-range-thumb {
-    width: 20px;
-    height: 20px;
+
+/* Botão do Slider para Chrome, Safari (iOS), Edge */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 32px; /* Área de toque grande para o polegar */
+    height: 32px;
     background: #2563eb;
+    border: 4px solid #ffffff;
     border-radius: 50%;
     cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    margin-top: -10px; /* Alinha com o track de 12px */
+}
+
+/* Botão do Slider para Firefox */
+input[type="range"]::-moz-range-thumb {
+    width: 32px;
+    height: 32px;
+    background: #2563eb;
+    border: 4px solid #ffffff;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Ajuste fino para inputs no iOS */
+input {
+    font-size: 16px !important; /* Evita zoom automático no iOS ao focar */
 }
